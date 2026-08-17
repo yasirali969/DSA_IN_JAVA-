@@ -5,8 +5,8 @@ public class RotateLinkedList {
         Node next;
 
         Node(int data) {
-            this.data = data;
-            this.next = null;
+            this.data =data;
+            this.next =null;
         }
     }
 
@@ -47,7 +47,7 @@ public class RotateLinkedList {
         Node newHead = newTail.next;
 
         // Break the circle
-        newTail.next = null;
+        newTail.next=null;
 
         return newHead;
     }
