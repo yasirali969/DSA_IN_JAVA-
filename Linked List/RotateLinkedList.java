@@ -10,9 +10,9 @@ public class RotateLinkedList {
         }
     }
 
-    static Node rotateRight(Node head, int k) {
+    static Node rotateRight(Node head,int k) {
 
-        if (head == null || head.next == null || k == 0) {
+        if (head == null || head.next==null || k == 0) {
             return head;
         }
 
@@ -20,7 +20,7 @@ public class RotateLinkedList {
         int length = 1;
         Node tail = head;
 
-        while (tail.next != null) {
+        while (tail.next!= null) {
             tail = tail.next;
             length++;
         }
