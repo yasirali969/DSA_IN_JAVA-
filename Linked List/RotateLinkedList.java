@@ -28,7 +28,7 @@ public class RotateLinkedList {
         // Avoid unnecessary rotations
         k = k % length;
 
-        if (k == 0) {
+        if (k==0) {
             return head;
         }
 
@@ -74,7 +74,7 @@ public class RotateLinkedList {
         System.out.println("Original:");
         display(head);
 
-        head = rotateRight(head, 2);
+        head = rotateRight(head,2);
 
         System.out.println("After rotation:");
         display(head);
