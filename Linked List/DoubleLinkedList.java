@@ -97,8 +97,8 @@ public class DoubleLinkedList{
     public static void main(String [] args){
         DoubleLinkedList DL=new DoubleLinkedList();
 
-        DL.Insertfirst(20);
-        DL.Insertfirst(10);
+          DL.Insertfirst(20);
+          DL.Insertfirst(10);
 
         DL.InsertEnd(40);
         DL.InsertEnd(50);
