@@ -94,8 +94,8 @@ public class DoubleLinkedList{
                 System.out.println("NULL");
             
     }
-    public static void main(String [] args){
-        DoubleLinkedList DL=new DoubleLinkedList();
+      public static void main(String [] args){
+         DoubleLinkedList DL=new DoubleLinkedList();
 
           DL.Insertfirst(20);
           DL.Insertfirst(10);
