@@ -54,6 +54,7 @@ public class DoubleLinkedList{
                 if(temp==null){
                     System.out.println("Invalid Position");
                 }
+                
                 temp=temp.next;
             }
 
@@ -73,7 +74,8 @@ public class DoubleLinkedList{
 
 
         void DisplayForward(){
-                Node temp=head;
+              
+            Node temp=head;
 
                 while(temp!=null){
                     System.out.print(temp.data+" ");
