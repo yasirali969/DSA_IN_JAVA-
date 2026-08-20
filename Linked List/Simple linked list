@@ -1,0 +1,45 @@
+public class SimpleLinkedList {
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    Node head = null;
+
+    // Insert at beginning
+    void insertAtBeginning(int data) {
+        Node newNode = new Node(data);
+
+        newNode.next = head;
+        head = newNode;
+    }
+
+    // Display linked list
+    void display() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+
+    public static void main(String[] args) {
+
+        SimpleLinkedList list = new SimpleLinkedList();
+
+        list.insertAtBeginning(30);
+        list.insertAtBeginning(20);
+        list.insertAtBeginning(10);
+
+        list.display();
+    }
+}
