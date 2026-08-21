@@ -9,7 +9,7 @@ class Recursion{
         this.next=null;
      }
   }
-  Node Recursive(int index,int size,int []arr){
+  Node Recursive (int index, int size , int []arr){
 
         if(index==size){
             return null;
@@ -33,7 +33,7 @@ class Recursion{
     Node temp=head;
 
         while(temp!=null){
-            System.out.print(temp.data+" ");
+            System.out.print (temp.data+" ");
             temp=temp.next;
         }
 
