@@ -16,7 +16,7 @@ public class TwoSum{
 
         for(int k=0;k<arr1.length;k++){
             for(int l=k+1;l<arr2.length;l++){
-                if(arr[k]+arr[l]==target){
+                if(arr[k] + arr[l]==target){
                     indices[0]=k;
                     indices[1]=l;
                     return indices;
@@ -28,18 +28,15 @@ public class TwoSum{
             Wrongind[0]=-1;
             Wrongind[1]=-1;
             return Wrongind;
-
-
-        
             }
         
     
     
     public static void main(String []args){
         TwoSum TS=new TwoSum();
-        int []nums={2,7,11,15};
-        int target=15;
-        int []ArraySum=TS.Sum(nums,target);
+        int []nums = {2,7,11,15};
+        int target =  15;
+        int [] ArraySum=TS.Sum(nums,target);
         System.out.print(" [");
         for(int i=0;i<ArraySum.length;i++){
         System.out.print( ArraySum[i]+" ");
