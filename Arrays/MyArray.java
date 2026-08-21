@@ -15,7 +15,6 @@ public class MyArray{
 
         arr[index]=value;
         size++;
-
     }
 
     void Delete(int index){
@@ -37,7 +36,7 @@ public class MyArray{
 
     void insertAfter(int aftervalue,int value){
         int index=0;
-        for(int i=0;i<size;i++){
+        for(int i=0 ; i<size ;i++){
                 if(arr[i]==aftervalue){
                      index=i;
                 }
@@ -47,7 +46,7 @@ public class MyArray{
             arr[i+1]=arr[i];
         }
 
-        arr[index+1]=value;
+        arr[index+1] = value;
         size++;     
         }
     
