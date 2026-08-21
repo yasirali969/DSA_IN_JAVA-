@@ -38,7 +38,7 @@ public class TwoSum{
         int target =  15;
         int [] ArraySum=TS.Sum(nums,target);
         System.out.print(" [");
-        for(int i=0;i<ArraySum.length;i++){
+        for(int i=0;i < ArraySum.length ; i++){
         System.out.print( ArraySum[i]+" ");
         }
         System.out.print("]");
