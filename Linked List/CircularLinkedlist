@@ -1,0 +1,178 @@
+class CircularLinkedList {
+
+    // Node class
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    Node head;
+    Node tail;
+
+    // Add at Front
+    public void addFront(int data) {
+        Node newNode = new Node(data);
+
+        // Case 1: Empty List
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+            tail.next = head;
+        }
+
+        // Case 2: List already has nodes
+        else {
+            newNode.next = head;
+            head = newNode;
+            tail.next = head;
+        }
+    }
+
+    // Add at Back
+    public void addBack(int data) {
+        Node newNode = new Node(data);
+
+        // Case 1: Empty List
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+            tail.next = head;
+        }
+
+        // Case 2: List already has nodes
+        else {
+            tail.next = newNode;
+            tail = newNode;
+            tail.next = head;
+        }
+    }
+
+    // Display Circular Linked List
+    public void display() {
+
+        // Empty list
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        Node current = head;
+
+        do {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        } while (current != head);
+
+        System.out.println("(Back to Head)");
+    }
+
+
+    // Delete Front
+    public void deleteFront() {
+
+        // Case 1: Empty list
+        if (head == null) {
+            System.out.println("List is empty");
+        }
+
+        // Case 2: Only one node
+        else if (head == tail) {
+            head = null;
+            tail = null;
+        }
+
+        // Case 3: Multiple nodes
+        else {
+            head = head.next;
+            tail.next = head;
+        }
+    }
+
+
+    // Delete Back
+    public void deleteBack() {
+
+        // Case 1: Empty
+        if (head == null) {
+            System.out.println("List is empty");
+        }
+
+        // Case 2: One node
+        else if (head == tail) {
+            head = null;
+            tail = null;
+        }
+
+        // Case 3: Multiple nodes
+        else {
+            Node current = head;
+
+            // Go to second last node
+            while (current.next != tail) {
+                current = current.next;
+            }
+
+            tail = current;
+            tail.next = head;
+        }
+    }
+
+
+    // Search Element
+    public void search(int key) {
+
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        Node current = head;
+
+        do {
+            if (current.data == key) {
+                System.out.println(key + " Found!");
+                return;
+            }
+
+            current = current.next;
+
+        } while (current != head);
+
+        System.out.println(key + " Not Found!");
+    }
+
+
+    public static void main(String[] args) {
+
+        CircularLinkedList list = new CircularLinkedList();
+
+        list.addBack(10);
+        list.addBack(20);
+        list.addBack(30);
+
+        System.out.println("Original List:");
+        list.display();
+
+        list.addFront(5);
+
+        System.out.println("After Add Front:");
+        list.display();
+
+        list.deleteFront();
+
+        System.out.println("After Delete Front:");
+        list.display();
+
+        list.deleteBack();
+
+        System.out.println("After Delete Back:");
+        list.display();
+
+        list.search(20);
+    }
+}
