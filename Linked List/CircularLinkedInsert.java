@@ -108,7 +108,7 @@ public class CircularLinkedInsert{
             return;
         }
 
-     while(current!=head && current.data!=target){
+     while(current.data!=target){
         current = current.next;
      }
         
@@ -132,32 +132,52 @@ public class CircularLinkedInsert{
 
         if(current.data==target){
         newnode.next = head;
-        current.next = newnode;
         head = newnode;
         return;
     }
 
 
-        while(current.next.next.data!=target){
+        while(current.next!=head && current.next.data!=target){
             current = current.next;
         }
 
+
+         if(current.next.data==target){
          newnode.next =  current.next;
          current.next = newnode;
+         }
+         else{
+            System.out.println("Target value "+target+"not find in the list");
+         }
 
     }
 
     void deleteAfter(int target){
         Node current =head;
+    do{
+        if(current.data == target){
 
-        while(current.next.data!=target){
-            current = current.next;
+            if(current.next==head){
+                System.out.println("No node exist after target");
+                return;
+            }
+                 current.next =current.next.next;
+                 return;
         }
-         current.next =current.next.next;
-    }
+                    current = current.next;
+
+    }while(current!=head);
+
+     System.out.println("Target value is not found");
+}
     
     boolean search(int target){
             Node current = head;
+
+            if(head == null){
+            System.out.println("Empty linkedList");
+            return false;
+        }
 
             do{
                 if(current.data==target){
@@ -173,20 +193,29 @@ public class CircularLinkedInsert{
     void Update(int target,int newvalue){
         Node current = head;
 
-        while( current.data!=target){
-            current = current.next;
-        }
-
-        if(current!=head){
-            System.out.println("Required Node is not exist");
+        if(head == null){
+            System.out.println("Empty linkedList");
             return;
         }
 
-            current.data = newvalue;
+        do{
+            if(current.data==target){
+                current.data = newvalue;
+                return;
+            }
+            current = current.next;
+        }while( current!=head);
+
+        System.out.println("Required Node is not exist!");
+
     }
 
     
         void Display(){
+            if(head == null){
+                System.out.println("No Node exist!");
+                return;
+            }
             Node temp1=head;
 
             do {
@@ -221,10 +250,10 @@ public class CircularLinkedInsert{
         CL.InsertAtEnd(70);
         CL.InsertAtEnd(80);
 
-    /*   CL.AddAfter(70,65);
-        CL.InsertBefore(50,45);
+       CL.AddAfter(70,65);
+       CL.InsertBefore(50,45);
 
-        CL.DeleteFront();
+    /*    CL.DeleteFront();
         CL.DeleteEnd();
         CL.deleteAfter(50);*/
         CL.Update(20,25);
