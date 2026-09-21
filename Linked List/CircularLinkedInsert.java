@@ -20,11 +20,12 @@ public class CircularLinkedInsert{
             return;
         }
 
+        // Agar hmri linkedlist me elements hain to use last node tak run krein ge
         while(current.next!=head){
-            current=current.next;
+            current=current.next; // last node ane par loop se bahir ajaein ge
         }
 
-        newNode.next = head;
+        newNode.next = head; 
         current.next = newNode;
         head = newNode;
     }
