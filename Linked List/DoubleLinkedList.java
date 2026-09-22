@@ -1,114 +1,196 @@
-public class DoubleLinkedList{
+class DoubleLinkedList{
     class Node{
         int data;
         Node next;
         Node prev;
-
         Node(int data){
-            this.data=data;
-            this.next=null;
-            this.prev=null;
+            this.data = data;
+            this.next = null;
+            this.prev = null;
         }
     }
-        Node head=null;
-        Node tail=null;
-
-        void Insertfirst(int data){
-            Node Newnode=new Node(data);
-
-            if (head==null){
-                head = tail = Newnode;
-            }
-            else{
-            Newnode.next=head;
-            head.prev=Newnode;
-            head=Newnode;
+    Node head;
+        DoubleLinkedList(){
+            head = null;
         }
-    }
 
-        void InsertEnd(int data){
-                
-                Node newNode=new Node(data);
-
-                if(head==null){
-                    head=tail=newNode;
-                }
-                else{
-                    tail.next=newNode;
-                    newNode.prev=tail;
-                    tail=newNode;
-                }
-            }
-        
-        void InsertPosition(int data , int position){
-            Node NewNode=new Node(data);
-
-            if(position==1){
-                Insertfirst(data);
+        void AddFront(int data){
+            Node newnode = new Node(data);
+            if(head == null){
+                head = newnode;
+                head.prev = null;
                 return;
             }
 
-            Node temp=head;
+            newnode.next = head;
+            head.prev = newnode;
+            head = newnode;
 
-            for(int i=0;i<position-1;i++){
-                if(temp==null){
-                    System.out.println("Invalid Position");
-                }
-                
-                temp=temp.next;
-            }
-
-            NewNode.next=temp.next;
-            NewNode.prev=temp;
-
-            // if new Node is not inserted at end
-
-            if(temp.next!=null){
-                temp.next.prev=NewNode;
-            }
-            else{
-                tail=NewNode;
-            }
-            temp.next = NewNode;
         }
 
-
-        void DisplayForward(){
-              
-            Node temp=head;
-
-                  while(temp!=null){
-                    System.out.print(temp.data+" ");
-                    temp=temp.next;
-                }
-                System.out.println("NULL");
+        void AddBack(int data){
+            Node newnode = new Node(data);
+            if(head == null){
+              head = newnode;
+              head.prev = null;
+              return;  
             }
 
-        void DisplayBackward(){
-                Node temp=tail;
+            Node current = head;
+            while(current.next!=null){
+                current = current.next;
+            }
+            current.next = newnode;
+            newnode.prev = current;
 
-                while(temp!=null){
-                    System.out.print(temp.data+" ");
-                    temp=temp.prev;
+        }
+
+        void AddAfter(int target , int data){
+            Node newnode = new Node(data);
+            if(head == null){
+                head = newnode;
+                head.prev = null;
+                return;  
+            }
+
+            Node current = head;
+
+            while(current!=null && current.data != target){
+                    current = current.next;
+            }
+            newnode.next = current.next;
+            newnode.prev = current;
+            if(current.next != null){
+                current.next.prev = newnode;
+            }
+            current.next = newnode;
+        }
+
+        void AddBefore(int target , int data){
+            Node newnode = new Node(data);
+            if(head == null){
+                head = newnode;
+                head.prev = null;
+                return; 
+            }
+
+            if(head.data == target){
+                newnode.next = head;
+                head.prev = newnode;
+                head = newnode;
+                return;
+            }
+
+            Node current = head;
+            while(current!=null && current.data != target){
+                current = current.next;
+            }
+
+            if(current == null){
+                System.out.println("Target does not exist!");
+                return;
+            }
+
+                newnode.next = current;
+                newnode.prev = current.prev;
+                current.prev.next = newnode;
+                current.prev = newnode;
+        }
+
+        void DeleteFront(){
+            if(head == null){
+                System.out.println("Empty linkedlist!");
+                return;
+            }
+            head = head.next;
+            if(head!=null){
+                head.prev= null;
+            }
+        }
+
+        void DeleteBack(){
+            if(head == null){
+                System.out.println("Empty linkedlist!");
+                return;
+            }
+
+            if(head.next == null){
+                head = null;
+                return;
+            }
+
+            Node current = head;
+            while(current.next!=null){
+                 current = current.next;
+            }
+
+            current.prev.next = null;
+
+        }
+
+        void Delete(int target){
+            if(head == null){
+                System.out.println("Empty linkedlist!");
+                return;
+            }
+
+            if(head.data == target){
+                head = head.next;
+                return;
+            }
+
+            Node current = head;
+            while(current.next!=null && current.data != target){
+                    if(current.next == null){
+                        current.prev.next = null;
+                        return;
+                    }
+                    current = current.next;
+            }
+
+                if(current.next == null){
+                    System.out.println("Target does not exist!");
+                    return;
                 }
-                System.out.println("NULL");
-            
+
+             current.prev.next = current.next.next;
+
+        }
+        void Display(){
+        Node current = head;
+
+        while(current!=null){
+            System.out.println(current.data+" ");
+            current = current.next;
+        }
     }
-      public static void main(String [] args){
-         DoubleLinkedList DL=new DoubleLinkedList();
 
-          DL.Insertfirst(20);
-          DL.Insertfirst(10);
+    public static void main(String []args){
+        DoubleLinkedList DL = new DoubleLinkedList();
+        DL.AddFront(50);
+        DL.AddFront(40);
+        DL.AddFront(30);
+        DL.AddFront(20);
+        DL.AddFront(10);
 
-        DL.InsertEnd(40);
-        DL.InsertEnd(50);
+        DL.AddBack(60);
+        DL.AddBack(70);
+        DL.AddBack(80);
 
-        DL.InsertPosition(30,2);
+        // AddAfter
+        DL.AddAfter(60,66);
 
-        System.out.println("Forward :");
-        DL.DisplayForward();
+        // AddBefore
+        DL.AddBefore(40,35);
 
-        System.out.println("Backward :");
-        DL.DisplayBackward();
+        // DeleteFront
+        DL.DeleteFront();
+
+        // DeleteBack
+        DL.DeleteBack();
+
+        // Delete
+        DL.Delete(60);
+        DL.Display();
     }
 }
