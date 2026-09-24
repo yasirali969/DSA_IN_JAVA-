@@ -1,0 +1,167 @@
+import java.util.Scanner;
+
+public class Recursion {
+
+    // 1. Direct recursion
+    static int factorial(int n) {
+        if (n == 0) {
+            return 1;
+        }
+
+        return n * factorial(n - 1);
+    }
+
+    // 2. Tail recursion
+    static int tailFactorial(int n, int result) {
+        if (n == 0) {
+            return result;
+        }
+
+        return tailFactorial(n - 1, result * n);
+    }
+
+    // 3. Head recursion
+    static void printNumbers(int n) {
+        if (n == 0) {
+            return;
+        }
+
+        printNumbers(n - 1);
+        System.out.println(n);
+    }
+
+    // 4. Mutual recursion
+    static boolean isEven(int n) {
+        if (n == 0) {
+            return true;
+        }
+
+        return isOdd(n - 1);
+    }
+
+    static boolean isOdd(int n) {
+        if (n == 0) {
+            return false;
+        }
+
+        return isEven(n - 1);
+    }
+
+    // 5. Tree recursion
+    static int fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    // 6. Nested recursion
+    static int M(int n) {
+        if (n > 100) {
+            return n - 10;
+        }
+
+        return M(M(n + 11));
+    }
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int choice;
+
+        do {
+            System.out.println();
+            System.out.println("            RECURSION DEMONSTRATOR          ");
+            System.out.println();
+            System.out.println("1. Direct Recursion");
+            System.out.println("2. Tail Recursion");
+            System.out.println("3. Head Recursion");
+            System.out.println("4. Mutual Recursion");
+            System.out.println("5. Tree Recursion");
+            System.out.println("6. Nested Recursion");
+            System.out.println("7. Exit");
+            System.out.print("Enter choice: ");
+
+            choice = input.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter number: ");
+                    int n1 = input.nextInt();
+
+                    if (n1 < 0) {
+                        System.out.println("Enter a positive number.");
+                    } else {
+                        System.out.println("Factorial = " + factorial(n1));
+                    }
+                    break;
+
+                case 2:
+                    System.out.print("Enter number: ");
+                    int n2 = input.nextInt();
+
+                    if (n2 < 0) {
+                        System.out.println("Enter a positive number.");
+                    } else {
+                        System.out.println("Factorial = "
+                                + tailFactorial(n2, 1));
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter number: ");
+                    int n3 = input.nextInt();
+
+                    if (n3 < 0) {
+                        System.out.println("Enter a positive number.");
+                    } else {
+                        printNumbers(n3);
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("Enter number: ");
+                    int n4 = input.nextInt();
+
+                    if (n4 < 0) {
+                        System.out.println("Enter a positive number.");
+                    } else {
+                        System.out.println("Even: " + isEven(n4));
+                        System.out.println("Odd: " + isOdd(n4));
+                    }
+                    break;
+
+                case 5:
+                    System.out.print("Enter Fibonacci number: ");
+                    int n5 = input.nextInt();
+
+                    if (n5 < 0) {
+                        System.out.println("Enter a positive number.");
+                    } else {
+                        System.out.println("Fibonacci = " + fibonacci(n5));
+                    }
+                    break;
+
+                case 6:
+                    System.out.print("Enter number: ");
+                    int n6 = input.nextInt();
+
+                    System.out.println("M(" + n6 + ") = " + M(n6));
+                    break;
+
+                case 7:
+                    System.out.println("Program ended.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 7);
+
+        input.close();
+    }
+}
