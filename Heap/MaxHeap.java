@@ -56,11 +56,11 @@ class MaxHeap{
                 int left = 2 * index +1;
                 int right = 2 * index + 2;
                 if(left < size && heap[left]> heap[largest]){
-                    largest = left;
+                      largest = left;
                 }
 
                 if(right < size && heap[right]> heap[largest]){
-                    largest = right;
+                      largest = right;
                 }
 
                 if(largest!=index){
