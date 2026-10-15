@@ -1,0 +1,70 @@
+class Duplicte{
+    class Node{
+         int data;
+         Node next;
+         Node(int data){
+            this.data = data;
+            this.next = null;
+         }
+    }
+    Node head;
+    int size;
+        
+        Duplicte(){
+            head = null;
+            size = 0;
+        }
+
+    void Addfront(int data){
+        Node newnode = new Node(data);
+        if(head == null){
+            head = newnode;
+            size++;
+            return;
+        }
+        newnode.next = head;
+        head = newnode;
+        size++;
+    }
+    
+    void Duplicated(){
+        Node current = head;
+        while(current!=null){
+        Node dup = current;
+
+            while(dup.next!=null){
+            if(current.data == dup.next.data){
+                dup.next = dup.next.next;
+            }
+            else{
+                dup = dup.next;
+            }
+         }
+            current = current.next;
+        }
+    }
+    void Display(){
+        Node current = head;
+        while(current!=null){
+            System.out.println(current.data+" ");
+            current = current.next;
+        }
+    }
+
+
+    public static void main(String []args){
+        Duplicte c = new Duplicte();
+        c.Addfront(40);
+        c.Addfront(30);
+        c.Addfront(20);
+        c.Addfront(10);
+        c.Addfront(30);
+        c.Addfront(10);
+        c.Display();
+        System.out.println("After Removal Duplication");
+        c.Duplicated();
+        c.Display();
+
+        
+    }
+}
