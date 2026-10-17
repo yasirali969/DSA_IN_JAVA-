@@ -1,0 +1,56 @@
+class QueueUsingStack{
+     static class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+    Node head;
+    int size;
+
+        QueueUsingStack(){
+            head = null;
+            size = 0;
+        }
+
+    void push(int data){
+        Node newnode = new Node(data);
+        if(head == null)
+        {
+            head = newnode;
+            size++;
+            return;
+        }
+
+        newnode.next = head;
+        head = newnode;
+        
+    }
+
+    int pop(){
+        int val = head.data;
+        head = head.next;
+        return val;
+    }
+
+    void Display(){
+        Node current = head;
+        while(current!=null){
+            System.out.println(current.data+" ");
+            current = current.next;
+        }
+    }
+    public static void main(String []args){
+        QueueUsingStack QS = new QueueUsingStack();
+        QS.push(10);
+        QS.push(20);
+        QS.push(30);
+        QS.Display();
+        QS.pop();
+        System.out.println("=== After Pop ===");
+        QS.Display();
+
+    }
+}
