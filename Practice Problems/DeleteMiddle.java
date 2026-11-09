@@ -7,10 +7,12 @@ class Node{
     }
 }
 public class DeleteMiddle{
-    Node head;
+    Node head
+
+    
     
     DeleteMiddle(){
-        head = null;
+        head=null;
     }
 
     void RemoveMiddleElement(int n){
@@ -23,6 +25,7 @@ public class DeleteMiddle{
             n--;
         }
 
+        
         prev.next=current.next;
     }
    
