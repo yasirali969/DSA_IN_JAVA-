@@ -4,9 +4,9 @@ class DeleteMiddleNode{
         Node next;
         Node prev;
         Node(int data){
-            this.data = data;
-            this.next = null;
-            prev = null;
+             this.data = data;
+             this.next = null;
+             prev = null;
         }
     }
     Node head;
