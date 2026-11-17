@@ -26,9 +26,9 @@ public class SimpleLinkedList {
         Node current = first;
 
         // Traverse the Linked List
-        while (current != null) {
-            System.out.println(current.data);
-            current = current.next;
+         while (current != null) {
+             System.out.println(current.data);
+             current = current.next;
         }
     }
 }
