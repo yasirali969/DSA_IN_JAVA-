@@ -19,8 +19,8 @@ public class SimpleLinkedList {
         Node third = new Node(30);
 
         // Connect the nodes
-        first.next = second;
-        second.next = third;
+         first.next = second;
+         second.next = third;
 
         // Start from first node
         Node current = first;
